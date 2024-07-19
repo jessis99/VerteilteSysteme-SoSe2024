@@ -75,7 +75,6 @@ public class Aktor extends Node{
                 if(array[i] != nameNumber){     //damit keine Nachrichten an sich selber geschickt werden
                     send(message, "Node" + array[i]);
                     Observer.anzahlAusgehenderNachrichten += 1;
-                    System.out.println("Ausgehend: " + Observer.anzahlAusgehenderNachrichten);
                 }
             } catch (UnknownNodeException e) {
                 e.printStackTrace();
@@ -83,13 +82,11 @@ public class Aktor extends Node{
         }
         zustandAktiv = false;
         Observer.activeAktors -= 1;
-        System.out.println("Aktiv: " + Observer.activeAktors);
     }
 
     protected void onMessage(Message message) {
 
         Observer.anzahlEingehenderNachrichten += 1;
-        System.out.println("Eingehend: " + Observer.anzahlEingehenderNachrichten);
         if (zustandAktiv) {
             return;
         }
@@ -99,7 +96,6 @@ public class Aktor extends Node{
             if (random.nextDouble() < probability) {
                 zustandAktiv = true;
                 Observer.activeAktors += 1;
-        System.out.println("Aktiv: " + Observer.activeAktors);
                 sendMessageToRandomNodes();
                 probability *= reductionFaktor;
             }

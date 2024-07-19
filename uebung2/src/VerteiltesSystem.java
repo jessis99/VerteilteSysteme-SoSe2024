@@ -12,14 +12,14 @@ public class VerteiltesSystem {
 
     public static void main(String[] args) {
         // Check if the number of nodes is provided
- /*       if (args.length != 1) {
+        if (args.length != 1) {
             System.err.println("Usage: java src.DistributedApp <number_of_nodes>");
             System.exit(1);
         }
-*/
+
         try {
-            //numberOfNodes = Integer.parseInt(args[0]);
-            numberOfNodes = 5;
+            numberOfNodes = Integer.parseInt(args[0]);
+            //numberOfNodes = 5;
         } catch (NumberFormatException e) {
             System.err.println("The number of nodes must be an integer.");
             System.exit(1);
